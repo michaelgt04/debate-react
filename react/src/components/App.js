@@ -15,6 +15,7 @@ class App extends Component {
     this.handlePassword = this.handlePassword.bind(this);
     this.signIn = this.signIn.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.signOut = this.signOut.bind(this);
   };
 
   handleUsername(event) {
@@ -52,6 +53,14 @@ class App extends Component {
     this.signIn()
   }
 
+  signOut() {
+    sessionStorage.clear()
+    this.setState({
+      token: null,
+      error: ""
+    })
+  }
+
   render () {
 
     let chooseComponent = () => {
@@ -59,6 +68,7 @@ class App extends Component {
         return(
           <Debate
             token={this.state.token}
+            signOut={this.signOut}
           />
         )
       } else {
