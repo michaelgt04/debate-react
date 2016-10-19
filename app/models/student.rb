@@ -9,7 +9,7 @@ class Student < ApplicationRecord
   has_many :registrations
   has_many :participants, through: :registrations
 
-  def self.from_token_request request
+  def self.from_token_request(request)
     username = request.params["auth"] && request.params["auth"]["username"]
     self.find_by username: username
   end
