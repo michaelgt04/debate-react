@@ -6,10 +6,10 @@ class Debate extends Component {
     this.setState = {
       token: props.token
     }
-  };
+  }
 
   render () {
-    sessionStorage.setItem("token", this.props.token)
+    sessionStorage.setItem("token", this.props.token);
     return(
       <h1>Welcome to Debate!</h1>
     )
