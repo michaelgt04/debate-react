@@ -11,7 +11,10 @@ class Debate extends Component {
   render () {
     sessionStorage.setItem("token", this.props.token)
     return(
-      <h1>Welcome to Debate!</h1>
+      <div>
+        <a className="inline" onClick={this.props.signOut}>Sign Out</a>
+        <span className="inline">Welcome to Debate!</span>
+      </div>
     )
   }
 }
