@@ -8,8 +8,8 @@ class App extends Component {
     this.state = {
       username: "",
       password: "",
+      error: "",
       token: sessionStorage.getItem("token"),
-      signedIn: sessionStorage.getItem("signedIn")
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -35,25 +35,27 @@ class App extends Component {
         auth: {
           email: this.state.username,
           password: this.state.password
-        },
-    }}).done(data => {
-      this.setState({
-        token: data.jwt,
-        signedIn: true
+        }},
+      error: function() {
+          this.setState({ error: "Login Unsuccessful! Please try again!" });
+        }.bind(this),
+      success: function(data) {
+        this.setState({
+          token: data.jwt,
+        })
+      }.bind(this)
       })
-    })
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.signIn()
-    sessionStorage.setItem("signedIn", true)
   }
 
   render () {
 
     let chooseComponent = () => {
-      if (this.state.signedIn) {
+      if (this.state.token) {
         return(
           <Debate
             token={this.state.token}
@@ -65,6 +67,7 @@ class App extends Component {
             handleUsername={this.handleUsername}
             handlePassword={this.handlePassword}
             handleSubmit={this.handleSubmit}
+            error={this.state.error}
           />
         )
       }

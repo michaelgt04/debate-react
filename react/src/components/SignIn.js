@@ -13,7 +13,8 @@ const SignIn = props => {
         <label htmlFor="password">Password:</label><br />
         <input type="password" name="password" onChange={props.handlePassword}/><br />
 
-        <input className="text-center button" type="submit" value="Log In" onClick={props.handleSubmit}/>
+        <input className="inline text-center button" type="submit" value="Log In" onClick={props.handleSubmit}/>
+        <p className="inline error">{props.error}</p>
       </form>
     </div>
   )
