@@ -1,5 +1,6 @@
 source 'https://rubygems.org/'
 
+ruby "2.3.1"
 gem 'rails', '5.0.0.1'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
@@ -8,6 +9,8 @@ gem 'jquery-rails'
 gem 'listen'
 gem 'knock'
 gem 'bcrypt'
+gem 'rb-readline'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'capybara'
