@@ -42,23 +42,23 @@ class App extends Component {
         }.bind(this),
       success: function(data) {
         this.setState({
-          token: data.jwt,
-        })
+          token: data.jwt
+        });
       }.bind(this)
       })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.signIn()
+    this.signIn();
   }
 
   signOut() {
-    sessionStorage.clear()
+    sessionStorage.clear();
     this.setState({
       token: null,
       error: ""
-    })
+    });
   }
 
   render () {
