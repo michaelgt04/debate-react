@@ -51,7 +51,6 @@ class App extends Component {
   }
 
   render () {
-
     let chooseComponent = () => {
       if (this.state.signedIn) {
         return(
@@ -75,8 +74,7 @@ class App extends Component {
         {chooseComponent()}
       </div>
     )
-  };
-
-};
+  }
+}
 
 export default App;
