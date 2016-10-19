@@ -1,4 +1,4 @@
-class Student < ApplicationRecord
+class Teacher < ApplicationRecord
   has_secure_password
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 5 }
@@ -11,6 +11,6 @@ class Student < ApplicationRecord
 
   def self.from_token_request(request)
     username = request.params["auth"]["email"]
-    student = self.find_by username: username
+    teacher = self.find_by username: username
   end
 end
