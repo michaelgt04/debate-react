@@ -46,7 +46,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.signIn()
+    this.signIn();
     sessionStorage.setItem("signedIn", true)
   }
 
