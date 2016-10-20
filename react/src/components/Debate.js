@@ -11,7 +11,6 @@ class Debate extends Component {
   render () {
     sessionStorage.setItem("token", this.props.token);
     App.cable = ActionCable.createConsumer("/websocket");
-    debugger;
     return(
       <div>
         <a className="inline" onClick={this.props.signOut}>Sign Out</a>
