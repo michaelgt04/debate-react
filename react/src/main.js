@@ -5,7 +5,6 @@ import App from './components/App';
 
 $(function() {
   ReactDOM.render(
-    <App />,
-    document.getElementById('app')
+    <App />, document.getElementById('app')
   );
 });

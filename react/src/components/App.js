@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SignIn from './SignIn'
-import Debate from './Debate'
+import { Router, Route, hashHistory } from 'react-router';
+import SignIn from './SignIn';
+import Debate from './Debate';
 
 class App extends Component {
   constructor(props) {
@@ -78,10 +79,9 @@ class App extends Component {
     let chooseComponent = () => {
       if (this.state.token) {
         return(
-          <Debate
-            token={this.state.token}
-            signOut={this.signOut}
-          />
+          <Router history={hashHistory}>
+            <Route path="/" component={Debate}/>
+          </Router>
         )
       } else {
         return(
