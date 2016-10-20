@@ -10,6 +10,11 @@ FactoryGirl.define do
   end
 
   factory :teacher do
+    username "thebest"
+    first_name "Satchel"
+    last_name "Paige"
+    password "greatteacher"
+    password_confirmation "greatteacher"
   end
 
   factory :course do

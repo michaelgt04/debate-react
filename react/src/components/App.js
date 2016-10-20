@@ -9,10 +9,12 @@ class App extends Component {
       username: "",
       password: "",
       error: "",
+      role: "",
       token: sessionStorage.getItem("token"),
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.handleRole = this.handleRole.bind(this);
     this.signIn = this.signIn.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signOut = this.signOut.bind(this);
@@ -28,10 +30,15 @@ class App extends Component {
     this.setState({ password: newPassword })
   }
 
-  signIn() {
+  handleRole(event) {
+    let newRole = event.target.checked;
+    this.setState({ role: newRole })
+  }
+
+  signIn(url) {
     $.ajax({
       method: 'POST',
-      url: '/student_token',
+      url: url,
       data: {
         auth: {
           email: this.state.username,
@@ -50,14 +57,19 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.signIn();
+    if (this.state.role) {
+      this.signIn('/teacher_token');
+    } else {
+      this.signIn('/student_token');
+    }
   }
 
   signOut() {
     sessionStorage.clear();
     this.setState({
       token: null,
-      error: ""
+      error: "",
+      role: ""
     });
   }
 
@@ -77,6 +89,7 @@ class App extends Component {
             handleUsername={this.handleUsername}
             handlePassword={this.handlePassword}
             handleSubmit={this.handleSubmit}
+            handleRole={this.handleRole}
             error={this.state.error}
           />
         )
