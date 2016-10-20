@@ -11,6 +11,6 @@ class Student < ApplicationRecord
 
   def self.from_token_request(request)
     username = request.params["auth"]["email"]
-    student = self.find_by username: username
+    self.find_by username: username
   end
 end

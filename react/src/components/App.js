@@ -60,7 +60,7 @@ class App extends Component {
     if (this.state.role) {
       this.signIn('/teacher_token');
     } else {
-      this.signIn('/student_token')
+      this.signIn('/student_token');
     }
   }
 
