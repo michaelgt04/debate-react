@@ -12,7 +12,7 @@ const SignIn = props => {
 
         <label htmlFor="password">Password:</label><br />
         <input type="password" name="password" onChange={props.handlePassword}/><br />
-        <input type="checkbox" name="teacher" onChange={props.handleRole} value="teacher"/>I am a Teacher!<br />
+        <input type="checkbox" name="teacher" value="teacher" onChange={props.handleRole}/>I am a Teacher!<br />
 
         <input className="inline text-center button" type="submit" value="Log In" onClick={props.handleSubmit}/>
         <p className="inline error">{props.error}</p>
