@@ -9,14 +9,36 @@ class DashboardContainer extends Component {
   }
 
   render () {
+    let keyNumber = 0
+    let students = this.props.students.map(student => {
+      keyNumber ++
+      return(
+        <StudentInfo
+          key={keyNumber}
+          firstName={student.studentFirst}
+          lastName={student.studentLast}
+          username={student.studentUsername}
+        />
+      )
+    })
     return (
-      <StudentInfo students={this.props.students}/>
+      <div className="row">
+        <div className="columns small-6 scrollable full-panel">
+          <h3>Students:</h3>
+          {students}
+        </div>
+        <div className="columns small-6 scrollable half-panel">
+          <h3>Debates</h3>
+        </div>
+        <div className="columns small-6 scrollable half-panel">
+          <h3>Classes</h3>
+        </div>
+      </div>
     )
   }
 }
 
 const mapStateToProps = store => {
-  debugger;
   return {
     students: store.studentState
   }

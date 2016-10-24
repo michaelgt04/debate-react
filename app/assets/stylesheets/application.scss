@@ -13,3 +13,21 @@
 .error {
   margin-left: 1rem;
 }
+
+.student-list {
+  padding: .25rem;
+  border: 1px solid black;
+  margin: 0px;
+}
+
+.scrollable {
+  overflow: scroll;
+}
+
+.full-panel {
+  height: 100vh;
+}
+
+.half-panel {
+  height: 50vh;
+}

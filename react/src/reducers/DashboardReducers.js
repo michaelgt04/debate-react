@@ -1,4 +1,4 @@
-export const studentInfoReducer = (state="", action) => {
+export const studentInfoReducer = (state=[], action) => {
   switch (action.type) {
     case "STUDENT_INFO":
       return action.students

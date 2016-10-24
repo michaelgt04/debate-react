@@ -2,7 +2,7 @@ import React from 'react'
 
 const StudentInfo = props => {
   return(
-    <h1>Students</h1>
+    <p className="student-list">{props.firstName} {props.lastName} {props.username}</p>
   )
 }
 

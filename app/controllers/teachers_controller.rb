@@ -3,13 +3,14 @@ class TeachersController < ApplicationController
 
   def index
     registrations = current_teacher.registrations
-    response = {students: {}}
+    response = { students: [] }
     registrations.each do |registration|
-      response[:students]["student#{registration.id}"] = {
+      response[:students] << {
         studentFirst: registration.student.first_name,
         studentLast: registration.student.last_name,
         studentUsername: registration.student.username
       }
+    end
     render json: response
   end
 
