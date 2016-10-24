@@ -5,20 +5,20 @@ import { GetStudents } from '../actions/DashboardActions'
 
 class DashboardContainer extends Component {
   componentDidMount() {
-    debugger;
     this.props.getStudents()
   }
 
   render () {
     return (
-      <StudentInfo />
+      <StudentInfo students={this.props.students}/>
     )
   }
 }
 
 const mapStateToProps = store => {
+  debugger;
   return {
-    students: store.studentInfoState
+    students: store.studentState
   }
 }
 

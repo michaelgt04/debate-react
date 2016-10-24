@@ -4,4 +4,5 @@ class Course < ApplicationRecord
   validates :school_year, presence: true, numericality: { only_integer: true }
 
   belongs_to :teacher
+  has_many :registrations
 end
