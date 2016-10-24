@@ -1,16 +1,19 @@
-import 'babel-polyfill';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-import InfoContainer from './components/InfoContainer'
-import store from './store';
-import { createStore } from 'redux';
-import { Provider, connect } from 'react-redux';
+import 'babel-polyfill'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import AppContainer from './components/App'
+import reducers from './reducers/index'
+
+let store = createStore(reducers, applyMiddleware(thunk));
 
 $(function() {
   ReactDOM.render(
-    <Provider store={store}>
-      <InfoContainer />
-    </Provider>, document.getElementById('app')
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>,
+  document.getElementById('app')
   );
 });
