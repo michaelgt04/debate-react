@@ -3,7 +3,7 @@ class TeachersController < ApplicationController
 
   def index
     binding.pry
-    students = current_teacher.registrations
+    students = current_teacher
   end
 
 end

@@ -6,8 +6,7 @@ class Teacher < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  has_many :registrations
-  has_many :participants, through: :registrations
+  has_many :courses
 
   def self.from_token_request(request)
     username = request.params["auth"]["email"]
