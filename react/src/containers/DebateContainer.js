@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { SignOutUser } from '../actions/AuthActions'
+import DashboardContainer from '../containers/DashboardContainer'
 import SignOut from '../components/SignOut'
 
 class Debate extends Component {
   render () {
     return(
       <div>
-        <SignOut signOut={this.props.signOut}/>
-        <h1>WELCOME TO THE REDUX!</h1>
+        <div className="row">
+          <SignOut signOut={this.props.signOut}/>
+        </div>
+        <div className="row">
+          <DashboardContainer />
+        </div>
       </div>
     )
   }

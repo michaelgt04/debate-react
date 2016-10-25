@@ -23,7 +23,7 @@ const mapStoreToProps = store => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     handleUsername: (event) => {
       let newUsername = event.target.value

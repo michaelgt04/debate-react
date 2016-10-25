@@ -13,3 +13,25 @@
 .error {
   margin-left: 1rem;
 }
+
+.list {
+  padding: .25rem;
+  border-bottom: 1px solid black;
+  margin: 0px;
+}
+
+.scrollable {
+  overflow: scroll;
+}
+
+.full-panel {
+  height: 90vh;
+}
+
+.half-panel {
+  height: 45vh;
+}
+
+.header {
+  height: 10vh;
+}
