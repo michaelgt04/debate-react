@@ -8,8 +8,12 @@ class Debate extends Component {
   render () {
     return(
       <div>
-        <SignOut signOut={this.props.signOut}/>
-        <DashboardContainer />
+        <div className="row">
+          <SignOut signOut={this.props.signOut}/>
+        </div>
+        <div className="row">
+          <DashboardContainer />
+        </div>
       </div>
     )
   }

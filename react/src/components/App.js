@@ -11,7 +11,7 @@ class App extends Component {
       if (this.props.token) {
         return(
           <Router history={hashHistory}>
-            <Route path="/" component={DashboardContainer}/>
+            <Route path="/" component={DebateContainer}/>
             <Route path='/debate' component={DebateContainer}/>
           </Router>
         )

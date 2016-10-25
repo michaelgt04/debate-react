@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { passwordReducer, usernameReducer, tokenReducer, roleReducer, errorReducer } from './AuthReducers';
-import { studentInfoReducer } from './DashboardReducers'
+import { studentInfoReducer, debateInfoReducer, courseInfoReducer } from './DashboardReducers'
 
 let reducers = combineReducers({
   passwordState: passwordReducer,
@@ -8,7 +8,9 @@ let reducers = combineReducers({
   tokenState: tokenReducer,
   roleState: roleReducer,
   errorState: errorReducer,
-  studentState: studentInfoReducer
+  studentState: studentInfoReducer,
+  debateState: debateInfoReducer,
+  courseState: courseInfoReducer
 });
 
 export default reducers;

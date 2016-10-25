@@ -8,6 +8,7 @@ class Teacher < ApplicationRecord
 
   has_many :courses
   has_many :registrations, through: :courses
+  has_many :debates, through: :courses
 
   def self.from_token_request(request)
     username = request.params["auth"]["email"]
