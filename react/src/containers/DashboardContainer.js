@@ -3,26 +3,53 @@ import { dispatch, connect } from 'react-redux'
 import StudentInfo from '../components/StudentInfo'
 import DebateInfo from '../components/DebateInfo'
 import CourseInfo from '../components/CourseInfo'
-import { GetTeacherInfo } from '../actions/DashboardActions'
+import PostInfo from '../components/PostInfo'
+import { GetInfo } from '../actions/DashboardActions'
 
 class DashboardContainer extends Component {
   componentWillMount() {
-    this.props.getInfo()
+    this.props.getNewInfo()
   }
 
   render () {
-    let studentKeyNumber = 0
-    let students = this.props.students.map(student => {
-      studentKeyNumber ++
-      return(
-        <StudentInfo
-          key={studentKeyNumber}
-          firstName={student.studentFirst}
-          lastName={student.studentLast}
-          username={student.studentUsername}
-        />
-      )
-    })
+    let leftSide = (props) => {
+      if (props.teacher) {
+        let studentKeyNumber = 0
+        let students = props.students.map(student => {
+          studentKeyNumber ++
+          return(
+            <StudentInfo
+              key={studentKeyNumber}
+              firstName={student.studentFirst}
+              lastName={student.studentLast}
+              username={student.studentUsername}
+            />
+          )
+        })
+        return students
+      } else {
+        let postKeyNumber = 0
+        let posts = props.posts.map(post => {
+          postKeyNumber ++
+          return(
+            <PostInfo
+              key={postKeyNumber}
+              body={post.postBody}
+              time={post.postTime}
+            />
+          )
+        })
+        return posts
+      }
+    }
+
+    let leftHeader = props => {
+      if (props.teacher) {
+        return "Students"
+      } else {
+        return "Posts"
+      }
+    }
 
     let debateKeyNumber = 0
     let debates = this.props.debates.map(debate => {
@@ -52,8 +79,8 @@ class DashboardContainer extends Component {
     return (
       <div className="row">
         <div className="columns small-6 scrollable full-panel">
-          <h3>Students:</h3>
-          {students}
+          <h3>{leftHeader(this.props)}</h3>
+          {leftSide(this.props)}
         </div>
         <div className="columns small-6 scrollable half-panel">
           <h3>Debates</h3>
@@ -72,14 +99,16 @@ const mapStateToProps = store => {
   return {
     students: store.studentState,
     debates: store.debateState,
-    courses: store.courseState
+    courses: store.courseState,
+    teacher: store.roleState,
+    posts: store.postState
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getInfo: () => {
-      dispatch(GetTeacherInfo())
+    getNewInfo: () => {
+      dispatch(GetInfo())
     }
   }
 }

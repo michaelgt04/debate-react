@@ -30,3 +30,14 @@ export const courseInfoReducer = (state=[], action) => {
       return state
   }
 }
+
+export const postInfoReducer = (state=[], action) => {
+  switch (action.type) {
+    case "POST_INFO":
+      return action.posts
+    case "LOGOUT":
+      return []
+    default:
+      return state
+  }
+}

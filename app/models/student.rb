@@ -7,7 +7,7 @@ class Student < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :registrations
-  has_many :participants, through: :registrations
+  has_many :participations, through: :registrations
 
   def self.from_token_request(request)
     username = request.params["auth"]["email"]
