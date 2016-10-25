@@ -3,11 +3,11 @@ import { dispatch, connect } from 'react-redux'
 import StudentInfo from '../components/StudentInfo'
 import DebateInfo from '../components/DebateInfo'
 import CourseInfo from '../components/CourseInfo'
-import { GetInfo } from '../actions/DashboardActions'
+import { GetTeacherInfo } from '../actions/DashboardActions'
 
 class DashboardContainer extends Component {
   componentWillMount() {
-    this.props.getStudents()
+    this.props.getInfo()
   }
 
   render () {
@@ -78,8 +78,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getStudents: () => {
-      dispatch(GetInfo())
+    getInfo: () => {
+      dispatch(GetTeacherInfo())
     }
   }
 }

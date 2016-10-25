@@ -1,4 +1,4 @@
-export const GetInfo = () => {
+export const GetTeacherInfo = () => {
   return (dispatch, getState) => {
     let token = getState().tokenState
     $.ajax({

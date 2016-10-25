@@ -12,7 +12,9 @@ class Debate extends Component {
           <SignOut signOut={this.props.signOut}/>
         </div>
         <div className="row">
-          <DashboardContainer />
+          <DashboardContainer
+            teacher={this.props.teacher}
+          />
         </div>
       </div>
     )
@@ -21,7 +23,7 @@ class Debate extends Component {
 
 const mapStateToProps = store => {
   return {
-
+    teacher: store.roleState
   }
 }
 
