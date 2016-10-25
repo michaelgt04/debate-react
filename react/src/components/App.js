@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Router, Route, hashHistory } from 'react-router';
+import SignOut from '../components/SignOut'
+import { SignOutUser } from '../actions/AuthActions'
 import DashboardContainer from '../containers/DashboardContainer'
 import DebateContainer from '../containers/DebateContainer';
 import AuthContainer from '../containers/AuthContainer'
@@ -10,10 +12,15 @@ class App extends Component {
     let authGateway = () => {
       if (this.props.token) {
         return(
-          <Router history={hashHistory}>
-            <Route path="/" component={DebateContainer}/>
-            <Route path='/debate' component={DebateContainer}/>
-          </Router>
+          <div>
+            <div className="row">
+              <SignOut signOut={this.props.signOut}/>
+            </div>
+            <Router history={hashHistory}>
+              <Route path="/" component={DashboardContainer}/>
+              <Route path='/debate' component={DebateContainer}/>
+            </Router>
+          </div>
         )
       } else {
         return (
@@ -36,4 +43,13 @@ const mapStateToProps = store => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => {
+      dispatch(SignOutUser())
+      sessionStorage.clear()
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

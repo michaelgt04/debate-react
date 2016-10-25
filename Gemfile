@@ -11,7 +11,6 @@ gem 'knock'
 gem 'bcrypt'
 gem 'rb-readline'
 gem 'foundation-rails'
-gem 'active_model_serializers'
 
 group :development, :test do
   gem 'capybara'
