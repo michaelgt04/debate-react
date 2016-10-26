@@ -5,6 +5,8 @@ import DebateInfo from '../components/DebateInfo'
 import CourseInfo from '../components/CourseInfo'
 import PostInfo from '../components/PostInfo'
 import { GetInfo } from '../actions/DashboardActions'
+import { SignOutUser } from '../actions/AuthActions'
+import Header from '../components/Header'
 
 class DashboardContainer extends Component {
   componentWillMount() {
@@ -77,18 +79,25 @@ class DashboardContainer extends Component {
     })
 
     return (
-      <div className="row">
-        <div className="columns small-6 scrollable full-panel">
-          <h3>{leftHeader(this.props)}</h3>
-          {leftSide(this.props)}
+      <div>
+        <div className="row">
+          <Header
+            signOut={this.props.signOut}
+          />
         </div>
-        <div className="columns small-6 scrollable half-panel">
-          <h3>Debates</h3>
-          {debates}
-        </div>
-        <div className="columns small-6 scrollable half-panel">
-          <h3>Classes</h3>
-          {courses}
+        <div className="row">
+          <div className="columns small-6 scrollable full-panel">
+            <h3>{leftHeader(this.props)}</h3>
+            {leftSide(this.props)}
+          </div>
+          <div className="columns small-6 scrollable half-panel">
+            <h3>Debates</h3>
+            {debates}
+          </div>
+          <div className="columns small-6 scrollable half-panel">
+            <h3>Classes</h3>
+            {courses}
+          </div>
         </div>
       </div>
     )
@@ -109,6 +118,10 @@ const mapDispatchToProps = dispatch => {
   return {
     getNewInfo: () => {
       dispatch(GetInfo())
+    },
+    signOut: () => {
+      dispatch(SignOutUser())
+      sessionStorage.clear()
     }
   }
 }
