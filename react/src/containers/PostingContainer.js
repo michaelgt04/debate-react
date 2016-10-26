@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import NewPost from '../components/NewPost'
+import { CreatePost } from '../actions/PostActions'
+import { HandleNewPost } from '../actions/PostActions'
 
 class PostingContainer extends Component {
   render() {
     return(
-      <div className="columns small-6 scrollable full-panel">
-        <h1>DEBATE TIME!!!!</h1>
+      <div>
+        <NewPost
+          handlePostSubmit={this.props.handlePostSubmit}
+          handleNewPost={this.props.handleNewPost}
+        />
       </div>
     )
   }
@@ -17,4 +23,17 @@ const mapStateToProps = store => {
   }
 }
 
-export default connect(mapStateToProps)(PostingContainer)
+const mapDispatchToProps = dispatch => {
+  return {
+    handlePostSubmit: (event) => {
+      event.preventDefault()
+      dispatch(CreatePost())
+    },
+    handleNewPost: (event) => {
+      let newPost = event.target.value
+      dispatch(HandleNewPost(newPost))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostingContainer)
